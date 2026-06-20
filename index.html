@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Travel Planner - inteligentny system, który zamienia rozmowę w dopasowaną trasę po Wrocławiu."
+    />
+    <title>Travel Planner | Wrocław dopasowany do Ciebie</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,700;9..144,900&display=swap"
+      rel="stylesheet"
+    />
+    <script>document.documentElement.classList.add("js");</script>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="Travel Planner - strona główna">
+        <span class="brand-mark" aria-hidden="true">TP</span>
+        <span>Travel Planner</span>
+      </a>
+      <nav aria-label="Główna nawigacja">
+        <a href="#jak-dziala">Jak działa</a>
+        <a href="#mozliwosci">Możliwości</a>
+        <a href="#dane">Dane</a>
+      </nav>
+      <a class="header-cta" href="#produkt">Zobacz produkt</a>
+    </header>
+
+    <main id="top">
+      <section class="hero section-shell">
+        <div class="hero-copy reveal">
+          <p class="eyebrow"><span></span> Twój Wrocław. Twój plan.</p>
+          <h1>Wycieczka, która naprawdę pasuje do <em>Ciebie.</em></h1>
+          <p class="hero-lead">
+            Powiedz, na co masz ochotę. Travel Planner odnajdzie właściwe miejsca,
+            ułoży wykonalny plan i poprowadzi Cię przez miasto.
+          </p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#jak-dziala">Poznaj Travel Planner</a>
+            <a class="text-link" href="#produkt">Zobacz przykładową trasę <span>↘</span></a>
+          </div>
+          <div class="hero-proof">
+            <div class="avatars" aria-hidden="true">
+              <span>M</span><span>J</span><span>M</span><span>M</span>
+            </div>
+            <p><strong>Od pomysłu do gotowej trasy</strong><br />w jednej rozmowie</p>
+          </div>
+        </div>
+
+        <div class="hero-visual reveal" aria-label="Ilustracja przykładowej trasy po Wrocławiu">
+          <div class="map-card">
+            <div class="map-topbar">
+              <span class="map-location"><i></i> Wrocław, Polska</span>
+              <span class="map-status">Plan gotowy</span>
+            </div>
+            <svg class="route-map" viewBox="0 0 620 560" role="img" aria-label="Trasa łącząca wybrane miejsca">
+              <defs>
+                <pattern id="grid" width="38" height="38" patternUnits="userSpaceOnUse">
+                  <path d="M 38 0 L 0 0 0 38" fill="none" stroke="#c8bfb1" stroke-width="1" opacity=".34" />
+                </pattern>
+                <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%">
+                  <feDropShadow dx="0" dy="7" stdDeviation="8" flood-color="#4e160f" flood-opacity=".22" />
+                </filter>
+              </defs>
+              <rect width="620" height="560" fill="url(#grid)" />
+              <path class="river" d="M-30 405 C95 320 168 470 286 390 S474 281 680 340" />
+              <g class="streets">
+                <path d="M75 40 C145 145 92 270 148 520" />
+                <path d="M320 -20 C295 110 386 225 350 590" />
+                <path d="M520 20 C420 145 475 270 545 540" />
+                <path d="M-20 145 C130 195 250 124 650 170" />
+                <path d="M-20 490 C150 450 350 510 650 425" />
+              </g>
+              <path class="route-shadow" d="M122 430 C88 345 155 281 230 306 S300 253 286 183 S396 89 468 143 S516 296 438 348 S255 463 122 430" />
+              <path class="route" d="M122 430 C88 345 155 281 230 306 S300 253 286 183 S396 89 468 143 S516 296 438 348 S255 463 122 430" />
+              <g class="pins">
+                <g transform="translate(122 430)"><circle r="19" /><text y="6">1</text></g>
+                <g transform="translate(230 306)"><circle r="19" /><text y="6">2</text></g>
+                <g transform="translate(286 183)"><circle r="19" /><text y="6">3</text></g>
+                <g transform="translate(468 143)"><circle r="19" /><text y="6">4</text></g>
+                <g transform="translate(438 348)"><circle r="19" /><text y="6">5</text></g>
+              </g>
+            </svg>
+            <div class="trip-summary">
+              <div><span>Dzisiejsza trasa</span><strong>Wrocław pełen odkryć</strong></div>
+              <div class="trip-metric"><strong>5</strong><span>miejsc</span></div>
+              <div class="trip-metric"><strong>4h</strong><span>plan</span></div>
+            </div>
+          </div>
+          <div class="floating-card floating-chat">
+            <span class="mini-bot">✦</span>
+            <p>Znalazłem miejsca zgodne z Twoimi potrzebami.</p>
+          </div>
+          <div class="floating-card floating-place">
+            <span>Najlepsze dopasowanie</span>
+            <strong>Ogród Botaniczny</strong>
+            <small>96% zgodności</small>
+          </div>
+        </div>
+      </section>
+
+      <section class="stats section-shell" aria-label="Projekt w liczbach">
+        <article class="stat reveal">
+          <strong data-count="20.9" data-suffix=" mln">20,9 mln</strong>
+          <span>punktów OSM przeanalizowanych na starcie</span>
+        </article>
+        <article class="stat reveal">
+          <strong data-count="16604">16 604</strong>
+          <span>unikalnych miejsc w bazie dla Wrocławia</span>
+        </article>
+        <article class="stat reveal">
+          <strong data-count="52587">52 587</strong>
+          <span>oczyszczonych sekcji opisujących miejsca</span>
+        </article>
+        <article class="stat reveal">
+          <strong data-count="4532">4 532</strong>
+          <span>informatywne streszczenia wzbogacające wybór</span>
+        </article>
+      </section>
+
+      <section class="story section-shell" id="jak-dziala">
+        <div class="section-heading reveal">
+          <p class="eyebrow"><span></span> Prościej niż wyszukiwarka</p>
+          <h2>Od swobodnej rozmowy<br />do konkretnej trasy.</h2>
+          <p>System rozumie zarówno miejsca, które musisz odwiedzić, jak i nastrój dnia, tempo czy kulinarne preferencje.</p>
+        </div>
+        <div class="steps">
+          <article class="step reveal">
+            <span class="step-number">01</span>
+            <div class="step-icon speech-icon" aria-hidden="true">„</div>
+            <h3>Opowiedz, czego potrzebujesz</h3>
+            <p>„Chcę się ochłodzić, zjeść lokalnie i zobaczyć coś nietypowego.”</p>
+          </article>
+          <article class="step reveal">
+            <span class="step-number">02</span>
+            <div class="step-icon search-icon" aria-hidden="true">⌕</div>
+            <h3>Odkryj trafne miejsca</h3>
+            <p>System łączy konkretne wymagania z szerszym kontekstem i ocenia dopasowanie.</p>
+          </article>
+          <article class="step reveal">
+            <span class="step-number">03</span>
+            <div class="step-icon route-icon" aria-hidden="true">⌁</div>
+            <h3>Ruszaj gotową trasą</h3>
+            <p>Otrzymujesz uporządkowany plan, czasy przejść i trasę wracającą do punktu startu.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="capabilities" id="mozliwosci">
+        <div class="section-shell capabilities-inner">
+          <div class="capability-copy reveal">
+            <p class="eyebrow light"><span></span> Inteligencja w praktyce</p>
+            <h2>Jeden cel.<br />Kilka perspektyw.</h2>
+            <p>Wyspecjalizowane role współpracują nad planem, zamiast ograniczać się do jednej listy popularnych atrakcji.</p>
+            <ul class="feature-list">
+              <li><span>✓</span> rozumienie twardych i miękkich potrzeb</li>
+              <li><span>✓</span> wyszukiwanie miejsc z wielu źródeł</li>
+              <li><span>✓</span> układanie wykonalnej kolejności zwiedzania</li>
+              <li><span>✓</span> poprawianie planu w toku rozmowy</li>
+            </ul>
+          </div>
+          <div class="agent-orbit reveal" aria-label="Schemat współpracy elementów systemu">
+            <div class="orbit orbit-one"></div>
+            <div class="orbit orbit-two"></div>
+            <div class="agent agent-center"><span>✦</span><strong>Twój<br />plan</strong></div>
+            <div class="agent agent-one"><span>01</span><strong>Rozmowa</strong><small>Twoje potrzeby</small></div>
+            <div class="agent agent-two"><span>02</span><strong>Wiedza</strong><small>Trafne miejsca</small></div>
+            <div class="agent agent-three"><span>03</span><strong>Mapa</strong><small>Optymalna trasa</small></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="product section-shell" id="produkt">
+        <div class="section-heading centered reveal">
+          <p class="eyebrow"><span></span> Wszystko w jednym widoku</p>
+          <h2>Rozmawiaj. Doprecyzuj. Odkrywaj.</h2>
+          <p>Plan pozostaje czytelny na każdym etapie, a wybrane miejsca od razu pojawiają się na mapie.</p>
+        </div>
+        <div class="product-window reveal">
+          <div class="browser-bar">
+            <div class="browser-dots"><i></i><i></i><i></i></div>
+            <span>Travel Planner / Wrocław</span>
+            <span class="secure">● online</span>
+          </div>
+          <div class="product-grid">
+            <div class="chat-panel">
+              <div class="panel-label">Rozmowa</div>
+              <div class="message system-message">Jakiej wycieczki potrzebujesz?</div>
+              <div class="message user-message">Mam 5 godzin. Chcę zobaczyć Politechnikę, krasnale i zjeść wegański obiad.</div>
+              <div class="message system-message">Mam propozycję. Dodałem 5 miejsc i powrót na plac Grunwaldzki.</div>
+              <div class="fake-input">Doprecyzuj swój plan… <span>↑</span></div>
+            </div>
+            <div class="plan-panel">
+              <div class="panel-label">Twój plan <span>5 przystanków</span></div>
+              <ol class="mini-plan">
+                <li><i>1</i><div><strong>Plac Grunwaldzki</strong><span>Start · 09:00</span></div></li>
+                <li><i>2</i><div><strong>Politechnika Wrocławska</strong><span>Zwiedzanie · 60 min</span></div></li>
+                <li><i>3</i><div><strong>Szlak krasnali</strong><span>Spacer · 75 min</span></div></li>
+                <li><i>4</i><div><strong>Wegański lunch</strong><span>Przerwa · 60 min</span></div></li>
+                <li><i>5</i><div><strong>Plac Grunwaldzki</strong><span>Meta · 14:00</span></div></li>
+              </ol>
+            </div>
+            <div class="mini-map" aria-hidden="true">
+              <svg viewBox="0 0 390 500">
+                <path class="mini-river" d="M-10 344 C92 281 130 388 220 329 S318 246 410 286" />
+                <path class="mini-route-shadow" d="M76 403 C44 310 108 260 178 288 S184 178 263 105 S358 195 296 299 S179 405 76 403" />
+                <path class="mini-route" d="M76 403 C44 310 108 260 178 288 S184 178 263 105 S358 195 296 299 S179 405 76 403" />
+                <g class="mini-pins"><circle cx="76" cy="403" r="10" /><circle cx="178" cy="288" r="10" /><circle cx="263" cy="105" r="10" /><circle cx="296" cy="299" r="10" /></g>
+              </svg>
+              <div class="map-caption"><strong>7,8 km</strong><span>pełna pętla</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="data-story section-shell" id="dane">
+        <div class="data-visual reveal">
+          <div class="data-ring ring-main"><strong>16 604</strong><span>miejsc</span></div>
+          <div class="data-ring ring-a"><strong>22 061</strong><span>łączy</span></div>
+          <div class="data-ring ring-b"><strong>1 068</strong><span>tagów</span></div>
+          <div class="data-line line-a"></div>
+          <div class="data-line line-b"></div>
+          <span class="data-chip chip-a">godziny otwarcia</span>
+          <span class="data-chip chip-b">opisy</span>
+          <span class="data-chip chip-c">lokalizacja</span>
+        </div>
+        <div class="data-copy reveal">
+          <p class="eyebrow"><span></span> Więcej niż pinezka</p>
+          <h2>Miasto opisane tak, by można było je zrozumieć.</h2>
+          <p>Łączymy lokalizację z typem miejsca, godzinami otwarcia, opisami i relacjami. Dzięki temu rekomendacja odpowiada na potrzebę, a nie tylko na podobne słowo.</p>
+          <div class="source-row">
+            <span>OpenStreetMap</span><span>Wikidata</span><span>strony miejsc</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="quote-band">
+        <div class="section-shell quote-inner reveal">
+          <span class="quote-mark">“</span>
+          <blockquote>Dobry plan nie zaczyna się od listy atrakcji. Zaczyna się od zrozumienia człowieka.</blockquote>
+          <div class="route-doodle" aria-hidden="true"><i></i><i></i><i></i></div>
+        </div>
+      </section>
+
+      <section class="team section-shell">
+        <div class="section-heading reveal">
+          <p class="eyebrow"><span></span> Zespół</p>
+          <h2>Łączymy AI, dane<br />i doświadczenie miasta.</h2>
+        </div>
+        <div class="team-list reveal">
+          <span>Michał Bernacki-Janson</span>
+          <span>Mateusz Zbrocki</span>
+          <span>Michał Rajkowski</span>
+          <span>Julianna Godziszewska</span>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="section-shell footer-inner">
+        <div><strong>Travel Planner</strong><span>Wrocław dopasowany do Ciebie.</span></div>
+        <p>Projekt badawczo-rozwojowy · AI Forum 2026</p>
+        <a href="#top">Wróć na górę ↑</a>
+      </div>
+    </footer>
+  </body>
+</html>
