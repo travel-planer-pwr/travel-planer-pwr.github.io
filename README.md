@@ -1,25 +1,33 @@
-# Travel Planner - static website
+# Travel Planner — strona statyczna
 
-Samodzielna strona prezentująca projekt. Nie wymaga instalowania zależności ani procesu budowania.
+Strona prezentująca projekt Travel Planner. Jest zbudowana wyłącznie z HTML, CSS i JavaScriptu — nie wymaga backendu, instalowania zależności ani procesu budowania.
 
-## Uruchomienie
+## GitHub Pages
 
-Z katalogu głównego repozytorium:
+To repozytorium jest bezpośrednio repozytorium strony — plik `index.html` znajduje się w jego katalogu głównym. Repozytorium na GitHubie powinno mieć nazwę `<nazwa-konta>.github.io`; dla obecnego zdalnego repozytorium jest to `travel-planer-pwr.github.io`.
 
-```bash
-python -m http.server 8080 --directory static_website
-```
+Publikacja jest automatyczna. Każdy push do gałęzi `main` uruchamia workflow [`.github/workflows/deploy-pages.yml`](.github/workflows/deploy-pages.yml), który wdraża pliki strony na GitHub Pages.
 
-Następnie otwórz `http://localhost:8080`.
+Docelowy adres dla tego repozytorium:
 
-## Publikacja
+<https://travel-planer-pwr.github.io/>
 
-Cały katalog `static_website/` można opublikować bez zmian przez GitHub Pages, Netlify, Cloudflare Pages lub dowolny serwer statyczny.
+Przy pierwszym wdrożeniu w repozytorium GitHub należy ustawić **Settings → Pages → Source** na **GitHub Actions**. Potem wystarczy push do `main`; lokalny serwer nie jest częścią wdrożenia.
+
+## Struktura
+
+- `index.html` — treść i semantyka strony,
+- `styles.css` — układ, responsywność i animacje,
+- `script.js` — animacje wejścia i liczników,
+- `.nojekyll` — wymusza publikację plików bez przetwarzania przez Jekyll,
+- `.github/workflows/deploy-pages.yml` — automatyczne wdrożenie.
+
+Wszystkie lokalne zasoby używają ścieżek względnych, więc strona działa zarówno pod domeną główną Pages, jak i po przeniesieniu do repozytorium projektowego z prefiksem ścieżki.
 
 ## Źródła treści
 
-- `presentation/Red&Cream Modern Startup Pitch Deck Presentation.pdf`
-- dane i przykładowe wyniki z bieżącego repozytorium
+- materiały prezentacyjne projektu,
+- dane i przykładowe wyniki zespołu Travel Planner.
 
 ## Inspiracje i decyzja technologiczna
 

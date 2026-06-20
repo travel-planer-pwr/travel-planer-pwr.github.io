@@ -1,6 +1,12 @@
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-const revealObserver = new IntersectionObserver(
+if (!("IntersectionObserver" in window)) {
+  document.querySelectorAll(".reveal").forEach((element) => {
+    element.classList.add("is-visible");
+  });
+}
+
+const revealObserver = "IntersectionObserver" in window ? new IntersectionObserver(
   (entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
@@ -10,18 +16,18 @@ const revealObserver = new IntersectionObserver(
     });
   },
   { threshold: 0.12 },
-);
+) : null;
 
 document.querySelectorAll(".reveal").forEach((element, index) => {
   element.style.transitionDelay = reducedMotion ? "0ms" : `${Math.min(index % 4, 3) * 70}ms`;
-  revealObserver.observe(element);
+  revealObserver?.observe(element);
 });
 
 const revealPassedElements = () => {
   document.querySelectorAll(".reveal:not(.is-visible)").forEach((element) => {
     if (element.getBoundingClientRect().top < window.innerHeight * 1.08) {
       element.classList.add("is-visible");
-      revealObserver.unobserve(element);
+      revealObserver?.unobserve(element);
     }
   });
 };
@@ -35,30 +41,40 @@ const formatNumber = (value, decimal) =>
     maximumFractionDigits: decimal ? 1 : 0,
   }).format(value);
 
-const countObserver = new IntersectionObserver(
+const animateCount = (element) => {
+  const target = Number(element.dataset.count);
+  const suffix = element.dataset.suffix ?? "";
+  const decimal = !Number.isInteger(target);
+  const duration = reducedMotion ? 0 : 1300;
+  const start = performance.now();
+
+  const tick = (now) => {
+    const progress = duration === 0 ? 1 : Math.min((now - start) / duration, 1);
+    const eased = 1 - Math.pow(1 - progress, 3);
+    element.textContent = `${formatNumber(target * eased, decimal)}${suffix}`;
+    if (progress < 1) requestAnimationFrame(tick);
+  };
+
+  requestAnimationFrame(tick);
+};
+
+const countObserver = "IntersectionObserver" in window ? new IntersectionObserver(
   (entries) => {
     entries.forEach((entry) => {
       if (!entry.isIntersecting) return;
 
       const element = entry.target;
-      const target = Number(element.dataset.count);
-      const suffix = element.dataset.suffix ?? "";
-      const decimal = !Number.isInteger(target);
-      const duration = reducedMotion ? 0 : 1300;
-      const start = performance.now();
-
-      const tick = (now) => {
-        const progress = duration === 0 ? 1 : Math.min((now - start) / duration, 1);
-        const eased = 1 - Math.pow(1 - progress, 3);
-        element.textContent = `${formatNumber(target * eased, decimal)}${suffix}`;
-        if (progress < 1) requestAnimationFrame(tick);
-      };
-
-      requestAnimationFrame(tick);
+      animateCount(element);
       countObserver.unobserve(element);
     });
   },
   { threshold: 0.5 },
-);
+) : null;
 
-document.querySelectorAll("[data-count]").forEach((element) => countObserver.observe(element));
+document.querySelectorAll("[data-count]").forEach((element) => {
+  if (countObserver) {
+    countObserver.observe(element);
+  } else {
+    animateCount(element);
+  }
+});
